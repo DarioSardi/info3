@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>sprites/falcon.png</file>
+        <file>sprites/laser.png</file>
+        <file>sprites/deathstar.png</file>
+        <file>sprites/tie.png</file>
+    </qresource>
+</RCC>

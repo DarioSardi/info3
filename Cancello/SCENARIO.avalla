@@ -1,0 +1,50 @@
+scenario SCENARIO
+load Cancello.asm
+check gate = STOPCLOSED;
+set telecomandoAction := OPEN;
+step
+check gate = OPENING;
+check state = opening gate;
+set telecomandoAction := NOTHING;
+set guard := OFF;
+step
+check gate = STOPOPEN;
+check state = Gate stopped open;
+check autoClosetime = 2;
+set telecomandoAction := NOTHING;
+set guard := OFF;
+step
+check gate = STOPOPEN;
+check state = counting down;
+check autoClosetime = 1;
+set telecomandoAction := NOTHING;
+set guard := OFF;
+step
+check gate = CLOSING;
+check state = closing gate;
+check autoClosetime = 0;
+set telecomandoAction := NOTHING;
+set guard := ON;
+step
+check gate = OPENING;
+check state = emergency open!;
+check autoClosetime = 0;
+set telecomandoAction := NOTHING;
+set guard := OFF;
+step
+check gate = STOPOPEN;
+check state = Gate stopped open;
+check autoClosetime = 2;
+set telecomandoAction := CLOSE;
+set guard := OFF;
+step
+check gate = CLOSING;
+check state = closing gate;
+check autoClosetime = 2;
+set telecomandoAction := NOTHING;
+set guard := OFF;
+step
+check gate = STOPCLOSED;
+check state = Gate stopped closed;
+check autoClosetime = 2;
+step
